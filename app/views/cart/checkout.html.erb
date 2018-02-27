@@ -1,2 +1,9 @@
-<h1>Cart#checkout</h1>
-<p>Find me in app/views/cart/checkout.html.erb</p>
+<h1>Thank you for shopping with us, <em><%= current_user.email %></em>!</h1>
+<p>Your order <%= @order.id %> will be arriving soon!</p>
+
+<% @order.order_items.each do |product, quantity| %>
+		<li><%= Product.find(product).name %>, Quantity: <%= quantity %></li>
+<% end %>		
+<h3>Order Total: <%= number_to_currency @order.grand_total %></h3>
+
+<h2>Come back to shop with us soon!</h2>
