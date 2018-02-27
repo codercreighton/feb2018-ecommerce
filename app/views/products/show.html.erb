@@ -14,6 +14,9 @@
     <%= number_to_currency(@product.price) %>
   </p>
 
+    <p>
+      
+    </p>    
   <p>Current Stock:
 
     <%= @product.quantity %>
@@ -33,7 +36,12 @@
 
   <p>Rating: 
 
-    <%= @product.rating %>
+    <% @product.rating.times do %>
+      <span class="glyphicon glyphicon-star"></span>
+      <% end %>
+      <% (5 - @product.rating).times do %>
+       <span class="glyphicon glyphicon-star-empty"></span>
+    <% end %>
   </p>
 
   <p>Located in: 
