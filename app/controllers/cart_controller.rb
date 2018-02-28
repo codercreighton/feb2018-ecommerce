@@ -2,8 +2,9 @@ class CartController < ApplicationController
 	before_action :authenticate_user!, except: [:add_to_cart, :view_order]
 
   def add_to_cart
-
+  	# get all the items from our line_item table
   	line_items = LineItem.all
+  	#check to see if 
   	 	if line_items.any? {|l| l.product_id == params[:product_id].to_i }
 	 			line_item = LineItem.find_by(product_id: params[:product_id])
 	 			line_item.update(quantity: line_item.quantity += params[:quantity].to_i)
@@ -49,7 +50,7 @@ class CartController < ApplicationController
 
 
   def delete_line_item
-  	line_item = LineItem.find(params[:id].to_i)
+  	line_item = LineItem.find(params[:id])
   	line_item.destroy
   	redirect_back(fallback_location: root_path)
   end	
