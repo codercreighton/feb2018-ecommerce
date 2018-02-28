@@ -1,3 +1,5 @@
+
+
 <div class="row">
   <% @products.each do |product| %>
     <div class="col-md-4">
@@ -47,13 +49,18 @@
           </center>
           </div>
           <div class="modal-footer">
-            <p>
+            <div class="col-md-6">
+            
               <%= form_tag add_to_cart_path do %>
                 <%= hidden_field_tag :product_id, product.id %>
-                <%= number_field_tag :quantity, nil, min: 0, max: product.quantity, placeholder: "How Many" %>
+                <%= number_field_tag :quantity, 1, min: 1, max: product.quantity %>
                 <%= submit_tag "Add To Cart", class: 'btn btn-primary' %>
                <% end %> 
-            </p>
+             </div>
+              <div class="col-md-6">
+            <%= link_to "Cancel", root_path, class: 'btn btn-danger' %>
+              
+            </div>
           </div>
         </div>
       </div>

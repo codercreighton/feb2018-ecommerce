@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  before_action :categories, :brands
+  before_action :categories, :brands, :count_items
   before_action :configure_permitted_parameters, if: :devise_controller?
 
 	def configure_permitted_parameters
@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 	    format.html { redirect_to main_app.product_url, :alert => "Not authorized!" }
 	  end	  
 	end  
-	
+
   def categories
   	@categories = Category.order(:name)
   end	
@@ -23,5 +23,9 @@ class ApplicationController < ActionController::Base
   def brands
   	@brands = Product.pluck(:brand).sort.uniq
   end	
+
+  def count_items 
+    @line_items = LineItem.all
+  end
 
 end

@@ -106,6 +106,17 @@
     	<h1 class="title">Welcome to SpreeShopper</h1>
   		<h4 class= "title2">Make every experience a shopping spree!</h4>
   	</div> 
+
+    <div class="container">
+      <div class="cart">
+        <% if @line_items.length == 0 || @line_items.length == nil  %>
+          <p><%= link_to "View Cart", view_order_path %><%= image_tag "empty_cart.png", class: 'cart-pic'%></p>
+        <% else %>
+          <p><%= link_to "View Cart", view_order_path %> <%= image_tag "full_cart.png", class: "cart-pic" %></p>
+         <% end %> 
+      </div>
+</div>
+
   <div class="container">
 
     <%= yield %> 

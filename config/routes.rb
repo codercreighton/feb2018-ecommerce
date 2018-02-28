@@ -11,6 +11,10 @@ Rails.application.routes.draw do
 
   get 'branding' =>'storefront#items_by_brand'
 
+  post 'edit_line_item' =>'cart#edit_line_item'
+
+  get 'delete_line_item' => 'cart#delete_line_item'
+
   devise_for :users
   resources :products
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
